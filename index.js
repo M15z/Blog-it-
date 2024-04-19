@@ -9,7 +9,7 @@ import axios from "axios";
 const app = express();
 const port = 3000;
 const API_URL = "https://api.unsplash.com";
-const clientId = "nvBPekP7MteZROtgLewRzQvy7zPsqZwQkd_1GsS8ZPg";
+const clientId = process.env.API_KEY;
 
 
 app.set('view engine', 'ejs');
