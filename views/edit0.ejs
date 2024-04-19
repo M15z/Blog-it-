@@ -1,0 +1,13 @@
+<%- include("partials/header.ejs") %>
+<div class="center">
+    <div class="mainC">
+        <h2>Edit Post</h2>
+        <form class="someForm"  action="/edit/0" method="POST" >
+            <input type="text" placeholder="Title of the blog" name="title" id="">
+            <textarea name="blog" placeholder="Content of the blog" id="" cols="30" rows="10"></textarea>
+            <input class="btn2" type="submit" value="Confirm">
+        </form>
+    </div>
+</div>
+
+<%- include("partials/footer.ejs") %>

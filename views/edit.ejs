@@ -1,0 +1,44 @@
+<%- include("partials/header.ejs") %>
+
+<div class="main">
+    <div class="blogContainer">
+        <ul class="blogStr">
+            
+            <div class="blogCard reveal">
+                <li class="li">
+                    <!-- <div class="center">
+                        <img class="blogImg" src="/uploads/<%= blogList[index].image %>" alt="Uploaded Image">
+                    </div> -->
+                    <% if(blogList[index].image.includes("https://images.unsplash.com")){ %>
+                        <div class="center">
+                            <img class="blogImg" src="<%= blogList[index].image %>" alt="Uploaded Image">
+                        </div>
+                        <% }else{ %>
+                        <div class="center">
+                            <img class="blogImg" src="/uploads/<%= blogList[index].image %>" alt="Uploaded Image">
+                        </div>
+                        <% } %>
+                    <div class="blogText">
+                        <p class="time"><%= blogList[index].time %></p>
+                        <h2><%= blogList[index].title %></h2>
+                        <p><%= blogList[index].blog %></p>
+
+                        
+                        <!-- <form action="/edit" method="POST">
+                        <button  id="myBtn" value="" name="choice"  class="btn3">edit</button>
+                        </form> -->
+                        
+                        <a href="/edit/0"  id="myBtn" value="<%= blogList.indexOf(blogList[index]) %>" name="choice"  class="btn3">edit</a>
+                    
+                        <form action="/delete" method="POST">
+                            <button  name="ind" value="<%= blogList.indexOf(blogList[index]) %>" class="btn4">Delete</button>
+                        </form>
+                        
+                    </div>
+                </li>
+            </div>
+                
+        </ul>    
+    </div>
+</div>
+<%- include("partials/footer.ejs") %>

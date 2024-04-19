@@ -1,0 +1,60 @@
+<%- include("partials/header.ejs") %>
+
+<div class="main">
+    <div class="blogContainer">
+                <ul class="blogStr">
+                    <% if(locals.blogList && blogList.length != 0){ %>
+                    
+
+                        <% blogList.forEach(blog => { %>
+                            <div class="blogCard reveal">
+                                <li class="li">
+                                    <% if(blog.image.includes("https://images.unsplash.com")){ %>
+                                        <div class="center">
+                                            <img class="blogImg" src="<%= blog.image %>" alt="">
+                                        </div>
+                                        <% }else{ %>
+                                        <div class="center">
+                                            <img class="blogImg" src="/uploads/<%= blog.image %>" alt="Uploaded Image">
+                                        </div>
+                                        <% } %>
+                                    <div class="blogText">
+                                        <p class="time"><%= blog.time %></p>
+                                        <h2><%= blog.title %></h2>
+                                        <% if(blog.blog.length > 131){ %>
+                                            <p><%= blog.blog.substring(0,130)%>....</p>
+                                            <% }else{ %>
+                                                <p><%= blog.blog%></p>
+                                            <% } %>
+                                        
+
+                                        <form id="myForm" action="/edit"  method="POST" >
+                                            <button  name="choice" value="<%= blogList.indexOf(blog) %>" class="btn4">Modify</button>
+                                        </form>
+                                    
+                                    </div>
+                                </li>
+                            </div>
+                            <%  }); %> 
+                        
+                    <% }else{ %> 
+                        <h4>Please write something here</h4>
+                        <div class="emty"></div>
+                        <%  } %>                
+                </ul>     
+    </div>
+    <!-- <div class="creatContainer">
+        <a href="/create"  class="btn1">Create Post</a>
+        <h4>Recent Post :</h4>
+        <% if(blogList.length != 0){ %>
+        <% blogList.forEach(blog => { %>
+            <h5><%= blog.title %></h5>
+            <p><%= blog.blog%></p>
+            <%  }); %>
+        <% }else{ %> 
+            <p>No blog posted yet</p>
+            <%  } %>       
+    </div> -->
+</div>
+
+<%- include("partials/footer.ejs") %>

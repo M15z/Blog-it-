@@ -1,0 +1,31 @@
+<%- include("partials/header.ejs") %>
+<div class="center">
+    <div class="mainC">
+        <h2>New Post</h2>
+        <form action="/create" method="POST">
+            <label for="searchWord">search about:</label>
+            <input type="text" name="searchWord" id="searchWord" required>
+            <input class="choosing__btn" type="submit" value="Generate">
+        </form>
+        <div class="imgCreateCon center">
+            <% if(locals.images) { %>
+                <img class="imgCreate" src="<%= images %>" alt="">
+                <% } else { %>
+                    <p>Generate Your Image Now!</p>
+                <% } %>
+        </div>
+        <form class="someForm" enctype="multipart/form-data" action="/" method="POST">
+            <input type="text" placeholder="Title of the blog" name="title" id="">
+            <textarea name="blog" placeholder="Content of the blog" id="" cols="30" rows="10"></textarea>
+            <label for="file-input">Select an image:</label>
+            <input type="file" name="image" accept="image/*" >
+            <input class="btn2" type="submit" value="Create Post">
+            
+        </form>
+        
+        
+        
+    </div>
+</div>
+
+<%- include("partials/footer.ejs") %>
